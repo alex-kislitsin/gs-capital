@@ -24,7 +24,7 @@
 
 1. создаем проект ```composer create-project --prefer-dist yiisoft/yii2-app-basic basic```
 2. устанавливаем docker в корне проекта ```docker-compose run --rm php composer install```
-3. в корне проекта, в файл ```docker-compose.yml вставляем следующую конфигурацию``` 
+3. в корне проекта, в файл ```docker-compose.yml``` вставляем следующую конфигурацию 
 ```
 version: '3'
 services:
