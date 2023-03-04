@@ -25,8 +25,6 @@
 1. создаем проект composer create-project --prefer-dist yiisoft/yii2-app-basic basic
 2. устанавливаем docker в корне проекта docker-compose run --rm php composer install
 3. в файл docker-compose.yml вставляем следующую конфигурацию 
--------------------
-
 ```
 version: '3'
 services:
@@ -58,7 +56,7 @@ services:
 volumes:
   mariadb:
 ```
-4. запускаем контейнеры docker-compose up -d
-5. устанавливаем миграции docker-compose exec php php yii migrate
+4. запускаем контейнеры ```docker-compose up -d```
+5. устанавливаем миграции ```docker-compose exec php php yii migrate```
 6. запускаем проект http://127.0.0.1:8000/
 7. смотрим базу данных http://127.0.0.1:8081/?server=mariadb&username=testuser&db=testdb
