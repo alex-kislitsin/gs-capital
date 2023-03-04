@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Betting;
+use app\models\Catalog;
 use Yii;
+use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -57,11 +60,24 @@ class SiteController extends Controller
     /**
      * Displays homepage.
      *
-     * @return string
+     * @return array|string|ActiveRecord[]
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return Catalog::find()->asArray()->all();
+    }
+
+    public function actionSetBet(int $id, int $userId)
+    {
+        $model = new Betting();
+        $model->catalog_id = $id;
+        $model->user_id = $userId;
+        if ($model->save()) {
+            return $this->redirect(['index']);
+        }
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        return $model->errors;
     }
 
     /**
